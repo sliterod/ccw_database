@@ -7,7 +7,6 @@
 	$name = $_POST[nombre];
 	$check = $_POST[check];
 	$query = "";
-	//echo 'reporte nombre: '.$name.', '.$check;
 	
 	$queryName = "
 	SELECT concat(nombre_nin, ' ', apellido_nin) nom, id_nin id 
@@ -27,18 +26,19 @@
 	else if ($check == "last") $query = $queryLast;
 
 	$result = $wpdb->get_results($query);
-
-	if (count($result) > 0){
-		foreach ($result as $element){
-			$id = $element->id;
-			$name = $element->nom;
 ?>
 <div id="primary" <?php echo simple_life_content_class( 'content-area' ); ?>>
 <main id="main" class="site-main" role="main">
 <table width="500px" border="1">
 	<tr align="justify">
-        <th>Nombre del niño</td>
+        <th>Nombre del niño</th>
     </tr>
+<?php
+	if (count($result) > 0){
+		foreach ($result as $element){
+			$id = $element->id;
+			$name = $element->nom;
+?>
 	<tr align="justify">
     	<td><a href="http://localhost/ccwperu/ficha-simple-nino/?id=<?php echo $id?>">
         <?php echo $name?>
@@ -53,6 +53,10 @@
 	}
 ?>
 </table>
+</br>
+<form action="http://localhost/ccwperu/busqueda-nombre/">
+<input type="submit" align="middle" value="Regresar"/>
+</form>
 </main><!-- #main -->
 </div><!-- #primary -->
 <?php get_footer();?>

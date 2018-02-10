@@ -2,7 +2,7 @@
 /*Template Name: Ficha Niño*/
 ?>
 <?php 
-	include('var_ficha_nino.php');
+	include('../ccwperu/wp-content/themes/simple-life/model/var_ficha_nino.php');
 	get_header();
 ?>
 <?php
@@ -22,6 +22,9 @@
 	$resultMother = $queryClass->queryParent($id,'madre');
 	$resultFather = $queryClass->queryParent($id,'padre');
 	$resultHome = $queryClass->queryHome($id);
+	
+	$dataSiblings = array();
+	$siblingCount = 0;
 	
 	foreach ($resultChild as $element){
 		$nombre = $element->nom; $apellido = $element->ape; $sexo = $element->sexo; $fecha = $element->nac;
@@ -95,50 +98,59 @@
 <div id="primary" <?php echo simple_life_content_class( 'content-area' ); ?>>
 <main id="main" class="site-main" role="main">
 <form action="http://localhost/ccwperu/pdf-nino-completo/" method="post">
-<table id="datos_nino" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_nino" border="1" width="800px">
     <tr align="center">
     	<th colspan="3">Datos del niño</th>
     </tr>
     <tr align="center">
-    	<th width="30%" rowspan="9" bordercolor="#0000FF">
+    	<th width="30%" rowspan="9" >
         <img name="pic" src="<?php echo $foto;?>" width="200" height="200" align="middle"/>
+        <input type="hidden" name="foto" value="<?php echo $foto;?>" />
         </th>
     </tr>
 	<tr align="justify">
 	    <th width="25%">Código</th>
-        <td width="45%"><?php echo $codigo;?></td>
+        <td width="45%"><?php echo $codigo;?>
+        </td>
     </tr>
     <tr align="justify">
         <th>Nombres</th>
-        <td><?php echo $nombre;?></td>
+        <td><?php echo $nombre;?>
+        </td>
     </tr>
     <tr align="justify">
         <th>Apellidos</th>
-        <td><?php echo $apellido;?></td>
+        <td><?php echo $apellido;?>
+        </td>
     </tr>
     <tr align="justify">
         <th>Sexo</th>
-        <td><?php echo $sexo;?></td>
+        <td><?php echo $sexo;?>
+        </td>
     </tr>
     <tr align="justify">
         <th>Fecha de nacimiento</th>
-        <td><?php echo $fecha;?></td>
+        <td><?php echo $fecha;?>
+        </td>
     </tr>
         <tr align="justify">
         <th>Edad actual</th>
-		<td><?php echo $edad;?></td>
+		<td><?php echo $edad;?>
+        </td>
     </tr>
     <tr align="justify">
         <th>Nombre del padrino</th>
-        <td><?php echo $sponsor;?></td>
+        <td><?php echo $sponsor;?>
+        </td>
     </tr>
     <tr align="justify">
         <th>Estado actual</th>
-        <td><?php echo $status;?></td>
+        <td><?php echo $status;?>
+        </td>
     </tr>
 </table>
 </br>
-<table id="estudios" border="1" bordercolor="#0000FF" width="800px">
+<table id="estudios" border="1" width="800px">
     <tr align="center">
     	<th colspan="6">Datos escolares</th>
     </tr>
@@ -167,7 +179,7 @@
     </tr>
 </table>
 </br>
-<table id="datos_hermano" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_hermano" border="1" width="800px">
 	<tr align="center">
     	<th colspan="6">Datos hermanos</th>
     </tr>
@@ -182,14 +194,26 @@
    <?php 
 	if (count($resultSibling) > 0){
 		foreach ($resultSibling as $sibling){
+			
+			$snom =$sibling->nombre;
+			$sape = $sibling->apellido;
+			$sgrad = $sibling->grado;
+			$sedad = $sibling->edad;
+			$ssexo = $sibling->sexo;
+			$sobserv = $sibling->observacion;
+			
+			$dataSiblings[$siblingCount] = 
+			$snom.'_'.$sape.'_'.$sgrad.'_'.$sedad.'_'.$ssexo.'_'.$sobserv;
+			
+			$siblingCount = $siblingCount + 1;
 	?>
     	<tr align="justify">
-			<td><?php echo $sibling->nombre;?></td>
-			<td><?php echo $sibling->apellido;?></td>
-			<td><?php echo $sibling->grado;?></td>
-			<td><?php echo $sibling->edad;?></td>
-			<td><?php echo $sibling->sexo;?></td>
-			<td><?php echo $sibling->observacion;?></td>
+			<td><?php echo $snom;?></td>
+			<td><?php echo $sape;?></td>
+			<td><?php echo $sgrad;?></td>
+			<td><?php echo $sedad;?></td>
+			<td><?php echo $ssexo;?></td>
+			<td><?php echo $sobserv;?></td>
 		</tr>
     <?php		
 		}
@@ -209,7 +233,7 @@
 	?>
 </table>
 </br>
-<table id="datos_padre" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_padre" border="1" width="800px">
 	<tr align="center">
     	<th colspan="4"><center>Datos padres</center></th>
     </tr>
@@ -267,7 +291,7 @@
     </tr>
 </table>
 </br>
-<table id="datos_adicional" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_adicional" border="1" width="800px">
 	<tr align="center">
     	<th colspan="3">Información adicional</th>
     </tr>
@@ -312,7 +336,7 @@
     </tr>
 </table>
 </br>
-<table id="datos_aceptacion" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_aceptacion" border="1" width="800px">
 	<tr align="center">
     	<th colspan="2">¿Ha aceptado el niño a Cristo como su salvador?</th>
     </tr>
@@ -330,12 +354,15 @@
     </tr>
 </table>	
 </br>
-<table id="datos_direccion" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_direccion" border="1" width="800px">
 	<tr align="center">
     	<th colspan="2">Información domicilio</th>
     </tr>
 	<tr align="justify">
-        <th width="20%">Ciudad</th>
+        <th width="20%">Ciudad</th><td>Lima</td>
+    </tr>
+    <tr align="justify">
+        <th width="20%">Provincia</th>
         <td><?php echo $prov;?></td>
     </tr>
     <tr align="justify">
@@ -348,7 +375,7 @@
     </tr>
 </table>
 <br>
-<table id="datos_centro" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_centro" border="1" width="800px">
 	<tr align="center">
     	<th colspan="2">Información Centro de Vida</th>
     </tr>
@@ -370,7 +397,35 @@
     </tr>
 </table>
 </br>
+<input type="hidden" name="nino" value="
+<?php echo $codigo.'_'.$nombre.'_'.$apellido.'_'.$sexo.'_'.$fecha.'_'.$edad.'_'.$sponsor.'_'.$status.'_'.$centro;
+?>" />
+<input type="hidden" name="madre" value="
+<?php echo $nommad.'_'.$apemad.'_'.$ocumad.'_'.$telmad.'_'.$fechamad.'_'.$vivemad.'_'.$razonmad.'_'.$civilmad;
+?>"/>
+<input type="hidden" name="padre" value="
+<?php echo $nompad.'_'.$apepad.'_'.$ocupad.'_'.$telpad.'_'.$fechapad.'_'.$vivepad.'_'.$razonpad.'_'.$civilpad;
+?>"/>
+<input type="hidden" name="hermano" value="
+<?php print base64_encode(serialize($dataSiblings));
+?>"/>
+<input type="hidden" name="estudio" value="
+<?php echo $estudio.'_'.$turno;?>"/>
+<input type="hidden" name="tecnica" value="
+<?php echo $nombretec.'_'.$iniciotec.'_'.$fintec;?>"/>
+<input type="hidden" name="adicional" value="
+<?php echo $familiar.'_'.$curso.'_'.$tareas.'_'.$hobby.'_'.$sueno.'_'.$comida.'_'.$rasgos.'_'.$acept.'_'.$aceptfecha.'_'.$aceptobserv;?>"/>
+<input type="hidden" name="centro" value="
+<?php echo $centro.'_'.$inscrito.'_'.$telefono.'_'.$ingreso;?>"/>
+<input type="hidden" name="domicilio" value="
+<?php echo 'Lima_'.$prov.'_'.$dist.'_'.$lugar;?>"/>
+<input type="hidden" name="historia" value="
+<?php echo $historia;?>"/>
 <input type="submit" align="middle" value="Generar reporte"/>
+</form>
+</br>
+<form action="http://localhost/ccwperu/ficha-simple-nino/?id=<?php echo $id;?>"  method="post">
+<input type="submit" align="middle" value="Regresar"/>
 </form>
 </main><!-- #main -->
 </div><!-- #primary -->

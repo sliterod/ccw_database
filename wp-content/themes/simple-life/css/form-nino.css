@@ -1,0 +1,54 @@
+@charset "utf-8";
+/* CSS Document */
+.column{
+	float:left; 
+	width:50%;
+	padding:2%;
+}
+
+.row:after{
+	content:""; 
+	display:table; 
+	clear:both;
+}
+
+.full-column{
+	float:left;
+	width:100%;
+	padding:2%;
+}
+
+/*Table*/
+table{
+	width:100%;
+	margin: 0 auto;
+	border:#000;
+}
+
+th{
+	text-transform:uppercase;
+}
+
+tr{
+	height:30px;
+}
+
+tbody tr:nth-child(odd){
+	background-color:#CCC;
+	color:#000;
+}
+
+p {
+	height:8px;
+}
+
+/*Classes*/
+.to-upper{
+	text-transform:uppercase;
+	width:100%;
+}
+
+@media (max-width: 1152px){
+	.column {width:100%;}
+	}
+

@@ -29,8 +29,8 @@ get_header();
 
 <div id="primary" <?php echo simple_life_content_class( 'content-area' ); ?>>
 <main id="main" class="site-main" role="main">
-<form action="http://localhost/ccwperu/agregar-nino/" method="post">
-<table id="datos_nino" border="1" bordercolor="#0000FF" width="800px">
+<form action="http://localhost/ccwperu/agregar-nino/" method="post" name="formnino">
+<table id="datos_nino" border="1"width="800px">
     <tr align="center">
     	<th colspan="3">Datos del niño</th>
     </tr>
@@ -81,7 +81,7 @@ get_header();
     </tr>
 </table>
 </br>
-<table id="estudios" border="1" bordercolor="#0000FF" width="800px">
+<table id="estudios" border="1"width="800px">
     <tr align="center">
     	<th colspan="6">Datos escolares</th>
     </tr>
@@ -126,7 +126,7 @@ get_header();
     </tr>
 </table>
 </br>
-<table id="datos_hermano" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_hermano" border="1"width="800px">
 	<tr align="center">
     	<th colspan="6">Datos hermanos</th>
     </tr>
@@ -159,9 +159,114 @@ get_header();
         </td>
         <td><input type="text" name="observh"/></td>
 	</tr>
+    <tr align="justify">
+        <td><input type="text" name="nomh"/></td>
+        <td><input type="text" name="apeh"/></td>
+        <td>
+	        <select name="gradoh">
+            <?php 
+                foreach($resultGrade as $element){
+            ?><option value="<?php echo $element->id;?>"><?php echo $element->gra;?></option>
+            <?php		
+                }?>	
+            </select>
+        </td>
+        <td><input type="text" name="edadh"/></td>
+        <td>
+        <select name="sexoh">
+           	<option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+        </td>
+        <td><input type="text" name="observh"/></td>
+	</tr>
+    <tr align="justify">
+        <td><input type="text" name="nomh"/></td>
+        <td><input type="text" name="apeh"/></td>
+        <td>
+	        <select name="gradoh">
+            <?php 
+                foreach($resultGrade as $element){
+            ?><option value="<?php echo $element->id;?>"><?php echo $element->gra;?></option>
+            <?php		
+                }?>	
+            </select>
+        </td>
+        <td><input type="text" name="edadh"/></td>
+        <td>
+        <select name="sexoh">
+           	<option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+        </td>
+        <td><input type="text" name="observh"/></td>
+	</tr>
+    <tr align="justify">
+        <td><input type="text" name="nomh"/></td>
+        <td><input type="text" name="apeh"/></td>
+        <td>
+	        <select name="gradoh">
+            <?php 
+                foreach($resultGrade as $element){
+            ?><option value="<?php echo $element->id;?>"><?php echo $element->gra;?></option>
+            <?php		
+                }?>	
+            </select>
+        </td>
+        <td><input type="text" name="edadh"/></td>
+        <td>
+        <select name="sexoh">
+           	<option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+        </td>
+        <td><input type="text" name="observh"/></td>
+	</tr>
+    <tr align="justify">
+        <td><input type="text" name="nomh"/></td>
+        <td><input type="text" name="apeh"/></td>
+        <td>
+	        <select name="gradoh">
+            <?php 
+                foreach($resultGrade as $element){
+            ?><option value="<?php echo $element->id;?>"><?php echo $element->gra;?></option>
+            <?php		
+                }?>	
+            </select>
+        </td>
+        <td><input type="text" name="edadh"/></td>
+        <td>
+        <select name="sexoh">
+           	<option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+        </td>
+        <td><input type="text" name="observh"/></td>
+	</tr>
+    <tr align="justify">
+        <td><input type="text" name="nomh"/></td>
+        <td><input type="text" name="apeh"/></td>
+        <td>
+	        <select name="gradoh">
+            <?php 
+                foreach($resultGrade as $element){
+            ?><option value="<?php echo $element->id;?>"><?php echo $element->gra;?></option>
+            <?php		
+                }?>	
+            </select>
+        </td>
+        <td><input type="text" name="edadh"/></td>
+        <td>
+        <select name="sexoh">
+           	<option value="M">M</option>
+            <option value="F">F</option>
+        </select>
+        </td>
+        <td><input type="text" name="observh"/></td>
+	</tr>
 </table>
 </br>
-<table id="datos_padre" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_padre" border="1"width="800px">
 	<tr align="center">
     	<th colspan="4"><center>Datos padres</center></th>
     </tr>
@@ -245,7 +350,7 @@ get_header();
     </tr>
 </table>
 </br>
-<table id="datos_adicional" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_adicional" border="1"width="800px">
 	<tr align="center">
     	<th colspan="3">Información adicional</th>
     </tr>
@@ -312,7 +417,7 @@ get_header();
     </tr>
 </table>
 </br>
-<table id="datos_aceptacion" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_aceptacion" border="1"width="800px">
 	<tr align="center">
     	<th colspan="2">¿Ha aceptado el niño a Cristo como su salvador?</th>
     </tr>
@@ -335,7 +440,7 @@ get_header();
     </tr>
 </table>	
 </br>
-<table id="datos_direccion" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_direccion" border="1"width="800px">
 	<tr align="center">
     	<th colspan="2">Información domicilio</th>
     </tr>
@@ -361,7 +466,7 @@ get_header();
     </tr>
 </table>
 <br>
-<table id="datos_centro" border="1" bordercolor="#0000FF" width="800px">
+<table id="datos_centro" border="1"width="800px">
 	<tr align="center">
     	<th colspan="2">Información Centro de Vida</th>
     </tr>
@@ -386,8 +491,7 @@ get_header();
         <td><input type="date" name="fechacentro"/></td>
     </tr>
 </table>
-	
-    <input type="submit" ="middle" value="Crear entrada"/>
+<input type="submit" ="middle" value="Crear entrada"/>
 </form>
 </main><!-- #main -->
 </div><!-- #primary -->

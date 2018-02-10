@@ -15,7 +15,7 @@ class CENTROPDF extends FPDF{
 	
 	function Table($header, $dataLeft, $dataRight, $align){
 		foreach ($header as $col){
-			$this->SetFillColor(0,100,255);
+			$this->SetFillColor(96,40,46);
 			$this->SetTextColor(255,255,255);
 			$this->Cell(95,7,utf8_decode($col),0,0,'C',true);	
 		}
@@ -47,6 +47,7 @@ class CENTROPDF extends FPDF{
 	$data_ayudante = explode("_",$head_ayudante);
 	
 	$pdf = new CENTROPDF();
+	$pdf->SetMargins(10,30,10);
 	$pdf->AddPage();
 	$pdf->SetFont('Arial','',12);
 	

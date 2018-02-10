@@ -37,7 +37,7 @@ if ($id){
 	        <td><input type="hidden" name="centro" value="<?php echo $element->nom;?>" />
             	<center><?php echo $element->nom;?></center>
             </td>
-			<th width="70%"><input type="hidden" name="direccion" value="" />
+			<th width="70%"><input type="hidden" name="direccion" value="<?php echo $element->dir;?>" />
             	<center><?php echo $element->dir;?></center>
             </th>
         </tr>
@@ -49,10 +49,10 @@ if ($id){
             <th width="50%"><center>Teléfono Maestra(o)</center></th>
         </tr>
         <tr>
-			<td><input type="hidden" name="maestro" value="" />
+			<td><input type="hidden" name="maestro" value="<?php echo $element->maestro;?>" />
             <center><?php echo $element->maestro;?></center>
             </td>
-            <td><input type="hidden" name="maes_tel" value="" />
+            <td><input type="hidden" name="maes_tel" value="<?php echo $element->telmaestro;?>" />
             <center><?php echo $element->telmaestro;?></center>
             </td>
         </tr>
@@ -61,9 +61,9 @@ if ($id){
             <th width="50%"><center>Teléfono Ayudante</center></th>
         </tr>
         <tr>
-			<td><input type="hidden" name="ayudante" value="" />
-            <center>---</center></td>
-            <td><input type="hidden" name="ayu_tel" value="" />
+			<td><input type="hidden" name="ayudante" value="<?php echo $element->ayudante;?>" />
+            <center><?php echo $element->ayudante;?></center></td>
+            <td><input type="hidden" name="ayu_tel" value="<?php echo $element->telayudante;?>" />
             <center><?php echo $element->telayudante;?></center></td>
 		</tr>
 <?php
@@ -78,6 +78,10 @@ if ($id){
         <input type="hidden" name="head_ayudante" value="Ayudante_Teléfono Ayudante"/>
         <input type="submit" align="middle" value="Generar reporte"/>
     </form>
+    </br>
+    <form action="http://localhost/ccwperu/centro-vida/">
+	<input type="submit" align="middle" value="Regresar"/>
+	</form>
 
 </main><!-- #main -->
 </div><!-- #primary -->

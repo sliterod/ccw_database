@@ -17,17 +17,19 @@ class LISTACENTRO extends FPDF{
 	function SetTableHeader($header){
 		$header_array = explode('_',$header);
 
-		$this->SetFillColor(0,100,255);
+		$this->SetFillColor(96,40,46);
 		$this->SetTextColor(255,255,255);
 		$this->Cell(20,7,utf8_decode($header_array[0]),1,0,'C',true);
-		$this->Cell(0,7,utf8_decode($header_array[1]),1,0,'C',true);
+		$this->Cell(80,7,utf8_decode($header_array[1]),1,0,'C',true);
+		$this->Cell(0,7,utf8_decode($header_array[2]),1,0,'C',true);
 		$this->Ln();
 	}
 
-	function Table($header, $number, $centre){
+	function Table($header, $number, $centre, $teacher){
 		
 		$num_array = explode('_',$number);
 		$centre_array = explode('_',$centre);
+		$teach_array = explode('_',$teacher);
 		
 		$this->SetTableHeader($header);
 		$this->SetTextColor(0,0,0);
@@ -36,14 +38,15 @@ class LISTACENTRO extends FPDF{
 		for($i = 1; $i< count($num_array);$i++){			
 		
 			if ($i % 2 == 0){
-				$this->SetFillColor(230,242,255);
+				$this->SetFillColor(220,170,176);
 			}
 			else {
 				$this->SetFillColor(255,255,255);
 			}
 		
 			$this->Cell(20,7,utf8_decode($num_array[$i]),1,0,'C',true);
-			$this->Cell(0,7,utf8_decode($centre_array[$i]),1,0,'C',true);
+			$this->Cell(80,7,utf8_decode($centre_array[$i]),1,0,'C',true);
+			$this->Cell(0,7,utf8_decode($teach_array[$i]),1,0,'C',true);
 			$this->Ln();
 		}
 		
@@ -52,13 +55,14 @@ class LISTACENTRO extends FPDF{
 	
 	$number = $_POST[numero];
 	$centre = $_POST[centro];
-	$head = $_POST[head_num].'_'.$_POST[head_centro];
+	$teacher = $_POST[maestro];
+	$head = $_POST[head_num].'_'.$_POST[head_centro].'_'.$_POST[head_maestro];
 
 	$pdf = new LISTACENTRO();
 	$pdf->SetMargins(30,20,30);
 	$pdf->AddPage();
 
-	$pdf->Table($head,$number,$centre);
+	$pdf->Table($head,$number,$centre, $teacher);
 	$pdf->Output();
 	
 ?>

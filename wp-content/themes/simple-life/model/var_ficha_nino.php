@@ -1,5 +1,17 @@
 <?php
+include_once('db_conn.php');
 class ProfileInfo{	
+	
+	private $dbConn;
+	
+	function __construct(){
+		$this->dbConn = new DatabaseConn();
+	}
+	
+	function getData($query){	
+		$result = $this->dbConn->generateResult($query);
+		return $result;
+	}
 	
 	function queryChildSimple ($id){
 		$query =
@@ -16,8 +28,8 @@ class ProfileInfo{
 		sexo_nin sexo
 		from nino
 		where id_nin = ".$id;	
-		
-		$result = $this->generateResult($query);	
+
+		$result = $this->getData($query);
 		return $result;
 	}
 	
@@ -28,7 +40,7 @@ class ProfileInfo{
 		from historial_nino
 		where fk_nino =".$id;	
 		
-		$result = $this->generateResult($query);	
+		$result = $this->getData($query);	
 		return $result;
 	}
 	
@@ -40,7 +52,7 @@ class ProfileInfo{
 		from historial_nino hn
 		where fk_nino =".$id;	
 		
-		$result = $this->generateResult($query);	
+		$result = $this->getData($query);	
 		return $result;
 	}
 	
@@ -55,7 +67,7 @@ class ProfileInfo{
 from nino
 where id_nin =".$id;	
 		
-		$result = $this->generateResult($query);	
+		$result = $this->getData($query);	
 		return $result;
 	}
 	
@@ -68,7 +80,7 @@ where id_nin =".$id;
 		from nino n
 		where id_nin =".$id;
 		
-		$result = $this->generateResult($query);	
+		$result = $this->getData($query);	
 		return $result;
 	}
 	
@@ -82,7 +94,7 @@ ifnull(inscritopor_nin ,'---') inscrito
 from nino n
 where id_nin =".$id;
 		
-		$result = $this->generateResult($query);	
+		$result = $this->getData($query);	
 		return $result;
 	}
 	
@@ -100,7 +112,7 @@ where id_nin =".$id;
 		from historial_nino
 		where fk_nino =".$id;
 
-		$result = $this->generateResult($query);	
+		$result = $this->getData($query);	
 		return $result;
 	}
 	
@@ -119,7 +131,7 @@ where id_nin =".$id;
 		FROM nino n
 		WHERE id_nin =".$id;
 		
-		$result = $this->generateResult($query);	
+		$result = $this->getData($query);	
 		return $result;
 	}
 	
@@ -132,105 +144,8 @@ where id_nin =".$id;
 		from nino n
 		where id_nin =".$id;
 		
-		$result = $this->generateResult($query);	
+		$result = $this->getData($query);	
 		return $result;
-	}
-		
-		
-	function generateResult($query){
-		global $wpdb;	
-		$result = $wpdb->get_results($query);
-		
-		return $result;
-	}
-	
-	function getData($id){
-		
-		$resultChild = $this->queryChildSimple($id);
-		$resultSchool = $this->querySchool($id);
-		$resultTech = $this->queryTechSchool($id);
-		$resultSibling = $this->querySiblings($id);
-		$resultAcceptance = $this->queryAcceptance($id);
-		$resultCentre = $this->queryCentre($id);
-		$resultDetails = $this->queryDetails($id);
-		$resultMother = $this->queryParent($id,'madre');
-		$resultFather = $this->queryParent($id,'padre');
-		$resultHome = $this->queryHome($id);
-	
-		foreach ($resultChild as $element){
-			$nombre = $element->nom; 
-			$apellido = $element->ape;
-			$sexo = $element->sexo; 
-			$fecha = $element->nac;
-			$edad = $element->edad; 
-			$centro = $element->centro; 
-			$sponsor = $element->padrino;
-			$codigo = $element->cod; 
-			$status = $element->estado; 
-			$foto = $element->foto;
-		}
-		
-		foreach ($resultSchool as $element){
-			$estudio = $element->estudio;
-			$turno = $element->turno;	
-		}
-		
-		foreach ($resultTech as $element){
-			$nombretec = $element->nombretec;
-			$iniciotec = $element->iniciotec;
-			$fintec = $element->fintec;
-		}
-		
-		foreach($resultAcceptance as $element){
-			$acept = $element->acep;
-			$aceptfecha = $element->fecha;	
-			$aceptobserv = $element->observ;
-		}
-		
-		foreach($resultCentre as $element){
-			$telefono = $element->telefono;
-			$ingreso = $element->ingreso;
-			$inscrito = $element->inscrito;
-		}
-		
-		foreach ($resultDetails as $element){
-			$familiar = $element->fam;
-			$curso =  $element->curso;
-			$tareas = $element->tareas;
-			$hobby = $element->hobby;
-			$sueno = $element->sueno;
-			$comida = $element->comida;
-			$rasgos = $element->rasgos;
-			$historia = $element->historia;
-		}
-		
-		foreach ($resultHome as $element){
-			$prov = $element->prov;
-			$dist = $element->dist;
-			$lugar = $element->lugar;	
-		}
-		
-		foreach ($resultFather as $element){
-			$nompad = $element->nompad;
-			$apepad = $element->apepad;
-			$ocupad = $element->ocupad;
-			$telpad = $element->telpad;
-			$fechapad = $element->fechapad;
-			$civilpad = $element->civilpad;
-			$razonpad = $element->razonpad;
-			$vivepad = $element->vivepad;
-		}
-		
-		foreach ($resultMother as $element){
-			$nommad = $element->nompad;
-			$apemad = $element->apepad;
-			$ocumad = $element->ocupad;
-			$telmad = $element->telpad;
-			$fechamad = $element->fechapad;
-			$civilmad = $element->civilpad;
-			$razonmad = $element->razonpad;
-			$vivemad = $element->vivepad;
-		}
 	}
 }
 

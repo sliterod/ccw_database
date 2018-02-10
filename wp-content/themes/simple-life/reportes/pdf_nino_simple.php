@@ -15,7 +15,7 @@ class NINOSIMPLE extends FPDF{
 	}
 
 	function SetTableHeader(){
-		$this->SetFillColor(0,100,255);
+		$this->SetFillColor(96,40,46);
 		$this->SetTextColor(255,255,255);
 		$this->Cell(0,7,utf8_decode("Datos del niño"),1,0,'C',true);
 		$this->Ln();
@@ -37,7 +37,7 @@ class NINOSIMPLE extends FPDF{
 		for ($i= 0; $i<count($head_array); $i++){
 			
 			if ($i % 2 == 0){
-				$this->SetFillColor(230,242,255);
+				$this->SetFillColor(220,170,176);
 			}
 			else {
 				$this->SetFillColor(255,255,255);

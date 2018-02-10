@@ -105,5 +105,9 @@ where id_nin = ".$id;
 <form action="http://localhost/ccwperu/ficha-nino/?id=<?php echo $id;?>" method="post">
 <input type="submit" ="middle" value="Ampliar ficha"/>
 </form>
+</br>
+<form action="http://localhost/ccwperu/busquedas/">
+<input type="submit" align="middle" value="Regresar"/>
+</form>
 </main><!-- #main -->
 </div><!-- #primary -->

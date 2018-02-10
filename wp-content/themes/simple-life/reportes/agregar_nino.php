@@ -1,6 +1,6 @@
 <?php
 /*Template Name: Agregar Niño*/
-include('../ccwperu/wp-content/themes/simple-life/model/db_conn.php');
+include_once('../ccwperu/wp-content/themes/simple-life/model/data_manager.php');
 get_header();
 ?>
 <div id="primary" <?php echo simple_life_content_class( 'content-area' ); ?>>
@@ -9,7 +9,7 @@ get_header();
 		
 	//Datos niño
 	$codigo = $_POST['codigo'];
-	$nombre = $_POST['nombre'];
+	$nombre = $_POST['nombreA'].' '.$_POST['nombreB'];
 	$apellido = $_POST['apellido'];
 	$sexo = $_POST['sexo'];
 	$fechanac = $_POST['fechanac'];
@@ -73,6 +73,29 @@ get_header();
 		
 	//File
 	$foto = $_POST['foto'];
+	
+	//Insert
+	//$result = $wpdb->get_results($query);
+	
+	$managerClass = new DataManager();
+	/*$resultInsert = 
+	$managerClass->InsertNino("test_nino",$codigo, $nombre, $apellido, $fechanac, $inscrito, $status);
+	
+	$resultUpdate = $managerClass->UpdateNino("test_nino","sexo_nin",$sexo);
+	
+	$resultSponsor = $managerClass->InsertSponsor("test_sponsor",$sponsor);
+	$resultInHist = $managerClass->InsertHistorialNino("test_nino","test_historial_nino");*/
+	
+	$resultChild = unserialize(stripcslashes(htmlspecialchars_decode($_POST['resultChild'])));
+	echo 'new: '.$nombre.'<br>';
+	echo 'old: '.$resultChild[0]->nom.'<br>';
+	
+	if(strcasecmp($nombre,$resultChild[0]->nom) == 0){
+		echo "same";
+	}
+	else{
+		echo "different, can be updated";
+	}
 ?>
 
 </main><!-- #main -->

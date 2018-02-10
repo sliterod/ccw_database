@@ -1,6 +1,9 @@
 <?php
 	/*Template Name: Niños Centro*/
+	get_header();
 ?>
+<div id="primary" <?php echo simple_life_content_class( 'content-area' ); ?>>
+<main id="main" class="site-main" role="main">
 <table id="datos_centro" width="100%" border="0">
 	<tr>
     	<th colspan="3"><font color="#FF0000"><u>LISTA DE NIÑOS APADRINADOS<u></font></th>
@@ -26,3 +29,8 @@
         <td align="justify" width="30%">---</th>
     </tr>
 </table>
+</main><!-- #main -->
+</div><!-- #primary -->
+<?php
+get_footer();
+?>

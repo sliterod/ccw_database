@@ -1,5 +1,5 @@
 <?php
-	/*Template Name: Regalos Navidad*/
+	/*Template Name: Regalos Mensual*/
 ?>
 <table id="datos_centro" width="100%" border="0">
 	<tr>
