@@ -8,6 +8,8 @@ abstract class FormQuery{
 	const personalidad = 4;
 	const distrito = 5;
 	const centro = 6;
+	const rol_maestro = 7;
+	const religion = 8;
 }
 	
 class FormData{	
@@ -28,7 +30,9 @@ class FormData{
 			"SELECT id_mar id, estado_mar est FROM estado_marital",
 			"SELECT id_pe id, rasgo_pe rasgo FROM personalidad",
 			"SELECT id_dis id, nombre_dis dist FROM distrito",
-			"SELECT id_cv id, nombre_cv centro FROM centro_vida ORDER BY centro"		
+			"SELECT id_cv id, nombre_cv centro FROM centro_vida ORDER BY centro",
+			"SELECT id_rol id, nombre_rol nombre FROM rol_maestro",
+			"SELECT nombre_rel nombre FROM religion"
 		);
 	}
 	
@@ -65,6 +69,14 @@ class FormData{
 	
 	function getTurno(){
 		return $this->getData(FormQuery::turno);
+	}
+	
+	function getRolMaestro(){
+		return $this->getData(FormQuery::rol_maestro);
+	}
+	
+	function getReligion(){
+		return $this->getData(FormQuery::religion);
 	}
 }
 ?>

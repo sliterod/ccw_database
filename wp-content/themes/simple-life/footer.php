@@ -29,7 +29,7 @@
 		);
 		?>
 		<?php if ( ! empty( $footer_nav ) ) : ?>
-			<nav class="social-navigation" role="navigation" aria-label="<?php _e( 'Footer Menu', 'simple-life' ); ?>">
+			<nav class="social-navigation" role="navigation" aria-label="<?php esc_attr_e( 'Footer Menu', 'simple-life' ); ?>">
 			<?php echo $footer_nav; ?>
 			</nav>
 		<?php endif ?>
@@ -39,9 +39,9 @@
 	?>
 	<?php if ( ! empty( $copyright_text ) ) : ?>
 
-    <div id="copyright-wrap">
-      <div class="copyright-text"><?php echo wp_kses_post( $copyright_text ); ?></div>
-    </div>
+		<div id="copyright-wrap">
+			<div class="copyright-text"><?php echo wp_kses_post( $copyright_text ); ?></div>
+		</div>
 
 	<?php endif ?>
 
@@ -52,9 +52,9 @@
 	<?php if ( true === $powered_by ) : ?>
 
   		<div class="site-info" id="powered-by-wrap">
-  			<a href="<?php echo esc_url( __( 'http://wordpress.org/', 'simple-life' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'simple-life' ), 'WordPress' ); ?></a>
+  			<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'simple-life' ) ); ?>"><?php printf( esc_html__( 'Proudly powered by %s', 'simple-life' ), 'WordPress' ); ?></a>
   			<span class="sep"> | </span>
-  			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'simple-life' ), 'Simple Life', '<a href="' . esc_url( 'http://nilambar.net/' ) . '" rel="designer">Nilambar</a>' ); ?>
+  			<?php printf( esc_html__( 'Theme: %1$s by %2$s.', 'simple-life' ), 'Simple Life', '<a href="' . esc_url( 'https://nilambar.net/' ) . '" rel="designer">Nilambar</a>' ); ?>
   		</div><!-- .site-info -->
 
 	<?php endif ?>

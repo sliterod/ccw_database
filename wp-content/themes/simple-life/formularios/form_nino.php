@@ -327,7 +327,11 @@ get_header();
         </tr>
         <tr align="justify">
             <th width="35%">Curso favorito en su lugar de estudios</th>
-            <td><input type="text" name="curso" class="to-upper"/></td>
+            <td><input type="radio" name="cursoRadio" value="fav" />SOLO AÑO
+            	<input type="text" name="curso" class="to-upper"/>
+                <input type="radio" name="cursoRadio" value="fav" />SOLO AÑO
+                <input type="text" name="curso" class="to-upper"/>
+            </td>
         </tr>
             <tr align="justify">
             <th width="35%">¿En qué forma ayuda el niño a su familia?</th>

@@ -69,13 +69,35 @@ get_header();
 		$ageFA = ($ageFemaleExp[1] == 0) ? '---':$ageFemaleExp[1];
 		$ageFE = ($ageFemaleExpE[1] == 0) ? '---':$ageFemaleExpE[1];
 		
-		echo "<tr>";
-		echo"	<th><center>".$ageMaleExp[0]."</center></th>
-				<td><center>".$ageMA."</center></td>
-				<td><center>".$ageFA."</center></td>
-				<td><center>".$ageME."</center></td>
-				<td><center>".$ageFE."</center></td>";
-		echo "</tr>";
+	?>
+    		<tr>
+				<th><center><?php echo $ageMaleExp[0];?></center></th>
+				<td><center>
+                <?php echo 
+				($ageMA > 0) ? "<a href='
+                http://192.168.1.8/ccwperu/estadistica-edad/?edad=".$ageMaleExp[0]."&sexo=M&status=1'>
+				".$ageMA."</a>":$ageMA;?>
+                </center></td>
+				<td><center>
+                <?php echo 
+				($ageFA > 0) ? "<a href='
+                http://192.168.1.8/ccwperu/estadistica-edad/?edad=".$ageMaleExp[0]."&sexo=F&status=1'>
+				".$ageFA."</a>":$ageFA;?>
+                </center></td>
+				<td><center>
+                <?php echo 
+				($ageME > 0) ? "<a href='
+                http://192.168.1.8/ccwperu/estadistica-edad/?edad=".$ageMaleExp[0]."&sexo=M&status=2'>
+				".$ageME."</a>":$ageME;?>
+                </center></td>
+				<td><center>
+                <?php echo 
+				($ageFE > 0) ? "<a href='
+                http://192.168.1.8/ccwperu/estadistica-edad/?edad=".$ageMaleExp[0]."&sexo=F&status=2'>
+				".$ageFE."</a>":$ageFE;?>
+                </center></td>
+			</tr>
+    <?php
 	}
 	?>
     <tr>
@@ -86,7 +108,7 @@ get_header();
         <th><center><?php echo ($totalFemaleE == 0) ? '---':$totalFemaleE;?></center></th>
     </tr>
 </table>
-<form action="http://localhost/ccwperu/">
+<form action="http://localhost/ccwperu/estadisticas">
 <input type="submit" align="middle" value="Regresar"/>
 </form>
 </div>

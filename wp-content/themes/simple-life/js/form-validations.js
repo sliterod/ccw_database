@@ -22,7 +22,7 @@ function AddSiblingRow(data){
 	var cellGrade = row.insertCell(4);
 	var cellObserv = row.insertCell(5);
 	
-	var gradeInner = "<select name='gradoh'>";
+	var gradeInner = "<select name='gradoh"+fixedSiblingIndex+"'>";
 	
 	for (i = 0; i < data.length; i++){
 		var array = data[i].split("_");
@@ -33,12 +33,12 @@ function AddSiblingRow(data){
 	
 	gradeInner = gradeInner + "</select>";
 	
-	cellNom.innerHTML = "<input type='text' name='' class='to-upper'/>";
-	cellLast.innerHTML = "<input type='text' name='' class='to-upper'/>";
-	cellAge.innerHTML = "<input type='text' name='' width='40' maxlength='2' onkeypress='javascript:return CheckNumberInput(event)'/>";
-	cellSex.innerHTML = "<select name=''><option value='M'>M</option><option value='F'>F</option></select>";
+	cellNom.innerHTML = "<input type='text' name='nombreh"+fixedSiblingIndex+"' class='to-upper'/>";
+	cellLast.innerHTML = "<input type='text' name='apellidoh"+fixedSiblingIndex+"' class='to-upper'/>";
+	cellAge.innerHTML = "<input type='text' name='edadh"+fixedSiblingIndex+"' width='40' maxlength='2' onkeypress='javascript:return CheckNumberInput(event)'/>";
+	cellSex.innerHTML = "<select name='sexoh"+fixedSiblingIndex+"'><option value='M'>M</option><option value='F'>F</option></select>";
 	cellGrade.innerHTML = gradeInner;
-	cellObserv.innerHTML = "<input type='text' name='' class='to-upper'/>";
+	cellObserv.innerHTML = "<input type='text' name='observh"+fixedSiblingIndex+"' class='to-upper'/>";
 	
 	fixedSiblingIndex += 1;
 };
@@ -52,11 +52,13 @@ function RemoveSiblingRow(){
 
 function ChangeParentRow(value, name, id){	
 	
-	var table = document.getElementById(id);
+	/*var table = document.getElementById(id);
 	table.deleteRow(-1);
 	
-	var row = table.insertRow(-1);
+	var row = table.insertRow(-1);*/
 
+	var row = GetTable(id);
+	
 	var cellLabel = row.insertCell(0);
 	var cellInput = row.insertCell(1);	
 	
@@ -68,4 +70,29 @@ function ChangeParentRow(value, name, id){
 		cellLabel.outerHTML = "<th>¿por qué no?</th>";
 		cellInput.outerHTML = "<td colspan='2'><input type='text' name='razon"+name+"' class='to-upper'/></td>";
 	}
+}
+
+function ChangeConvertionRow(radioButton){
+	var row = GetTable(id);
+	
+	var cellLabel = row.insertCell(0);
+	var cellInput = row.insertCell(1);	
+	
+	if (value == "year"){
+		cellLabel.outerHTML = "<th width='25%'>año conversión</th>";
+		cellInput.outerHTML = "<td><input type='date' name='conver'/></td>";
+	}
+	else if (value == "full"){
+		cellLabel.outerHTML = "<th width='25%'>f. conversión</th>";
+		cellInput.outerHTML = "<td><input type='text' name='conver' onkeypress='javascript:return CheckNumberInput(event)' maxlength='4'/></td>";
+	}
+}
+
+function GetTable(id){
+	var table = document.getElementById(id);
+	table.deleteRow(-1);
+	
+	var row = table.insertRow(-1);
+	
+	return row;
 }

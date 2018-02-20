@@ -1,6 +1,6 @@
 <?php
 /*Template Name: Agregar Niño*/
-include_once('../ccwperu/wp-content/themes/simple-life/model/data_manager.php');
+include_once('db_manager_nino.php');
 get_header();
 ?>
 <div id="primary" <?php echo simple_life_content_class( 'content-area' ); ?>>
@@ -22,11 +22,6 @@ get_header();
 	$tech = $_POST['tech'];
 	$techini = $_POST['techini'];
 	$techfin = $_POST['techfin'];
-	
-	//Hermano
-	/*$ = $_POST[''];
-	$ = $_POST[''];
-	$ = $_POST[''];*/
 	
 	//Padres
 	$nommad = $_POST['nommad'];
@@ -73,6 +68,9 @@ get_header();
 		
 	//File
 	$foto = $_POST['foto'];
+	
+	//Hermano
+	global $nombresH;
 	
 	//Insert
 	//$result = $wpdb->get_results($query);

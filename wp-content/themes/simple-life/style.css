@@ -1,14 +1,14 @@
 /*
 Theme Name: Simple Life
-Theme URI: http://nilambar.net/2015/03/simple-life-free-wordpress-theme.html
+Theme URI: https://nilambar.net/2015/03/simple-life-free-wordpress-theme.html
 Author: Nilambar Sharma
-Author URI: http://nilambar.net/
+Author URI: https://nilambar.net/
 Description: Simple Life is a simple, minimal and accessibility ready theme for your awesome WordPress website. It comes with a whole set of interesting, rich features and flexible theme customization. This theme is easily customizable with the Customizer feature of WordPress. It is also translation ready.
-Version: 2.2
+Version: 2.3
 License: GNU General Public License v3 or later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Text Domain: simple-life
-Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-header, custom-menu, editor-style, featured-images, full-width-template, post-formats, sticky-post, translation-ready, accessibility-ready, blog, footer-widgets
+Tags: one-column, two-columns, left-sidebar, right-sidebar, custom-background, custom-colors, custom-logo, custom-header, custom-menu, editor-style, featured-images, full-width-template, post-formats, sticky-post, translation-ready, accessibility-ready, blog, footer-widgets, threaded-comments
 
 This theme, like WordPress, is licensed under the GPL.
 Use it to make something cool, have fun, and share what you've learned with others.
@@ -894,12 +894,19 @@ object {
 --------------------------------------------------------------*/
 .gallery {
 	margin-bottom: 1.5em;
+	margin-left: -5px;
+	margin-right: -5px;
 }
 .gallery-item {
 	display: inline-block;
 	text-align: center;
 	vertical-align: top;
 	width: 100%;
+	margin: 0;
+	padding: 5px;
+}
+.gallery-item img {
+    vertical-align: middle;
 }
 .gallery-columns-2 .gallery-item {
 	max-width: 50%;
@@ -1124,6 +1131,10 @@ body.search-no-results .page-content {
 	padding: 0;
 	left: 1em;
 	top: 1em;
+}
+.woocommerce .products .star-rating {
+	display: inline-block;
+	text-align: center;
 }
 /*woocommerce ends*/
 

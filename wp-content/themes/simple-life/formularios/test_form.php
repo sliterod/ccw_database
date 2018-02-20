@@ -16,6 +16,7 @@ get_header();
 	$resultRasgo = $formData->getPersonalidad();
 	$resultDistrict = $formData->getDistrito();
 	$resultCentre = $formData->getCentro();
+	$resultReligion = $formData->getReligion();
 	
 	for($i = 0; $i < count($resultGrade); $i++){
 		$gradeArray[$i] = $resultGrade[$i]->id."_".strtoupper($resultGrade[$i]->gra);
@@ -35,7 +36,7 @@ get_header();
 	$resultHome = $profileInfo->queryHome($id);
 	
 ?><head>
-<link rel="stylesheet" type="text/css" href="/ccwperu/wp-content/themes/simple-life/css/form-nino.css">
+<link rel="stylesheet" type="text/css" href="/ccwperu/wp-content/themes/simple-life/css/form.css">
 <script src="/ccwperu/wp-content/themes/simple-life/js/form-validations.js"></script>
 <script>
 	var grades = <?php echo json_encode($gradeArray);?>;
@@ -207,8 +208,8 @@ get_header();
             <th width="20%">observaciones</th>
         </tr>
     </table>
-    <button onclick="RemoveSiblingRow()">-</button>
-    <button onclick="AddSiblingRow(grades)">+</button>
+    <a onclick="RemoveSiblingRow()"><strong>[Quitar]</strong></a>
+    <a onclick="AddSiblingRow(grades)"><strong>[Agregar]</strong></a>
     </div>
 </div>
 <div id="" class="row" style="width:inherit">
@@ -233,7 +234,15 @@ get_header();
         </tr>
         <tr align="justify">
             <th>religión</th>
-            <td colspan="2"><input type="text" name="religionmad" class="to-upper"/></td>
+            <td colspan="2">
+            <select name="religion">
+                <?php 
+                    foreach($resultReligion as $element){
+                ?><option value="<?php echo mb_strtoupper($element->nombre);?>"><?php echo mb_strtoupper($element->nombre);?></option>
+                <?php		
+                    }?>	
+            </select>
+            </td>
         </tr>
         <tr align="justify">
             <th>Teléfono (s)</th>
@@ -343,7 +352,17 @@ get_header();
         </tr>
         <tr align="justify">
             <th width="35%">Curso favorito en su lugar de estudios</th>
-            <td><input type="text" name="curso" class="to-upper"/></td>
+            <td align="left"><input type="radio" name="cursoRadio" value="fav" checked="checked"/>FAVORITAS USUALES
+            	<select name="cursoSel">
+                	<option value="MATEMÁTICA" selected="selected">MATEMÁTICA</option>
+                    <option value="COMUNICACIÓN">COMUNICACIÓN</option>
+                    <option value="COMPUTACIÓN">COMPUTACIÓN</option>
+                    <option value="ARTE">ARTE</option>
+                </select>
+                </br>
+                <input type="radio" name="cursoRadio" value="fav" />OTRA
+                <input type="text" name="cursoTxt" class="to-upper"/>
+            </td>
         </tr>
             <tr align="justify">
             <th width="35%">¿En qué forma ayuda el niño a su familia?</th>
@@ -355,7 +374,18 @@ get_header();
         </tr>
         <tr align="justify">
             <th width="35%">¿Qué quiere ser cuando sea grande?</th>
-            <td><input type="text" name="sueno" class="to-upper"/></td>
+            <td align="left"><input type="radio" name="suenoRadio" value="fav" checked="checked"/>SUEÑOS USUALES
+            	<select name="suenoSel">
+                	<option value="POLICIA" selected="selected">POLICIA</option>
+                    <option value="PROFESOR(A)">PROFESOR(A)</option>
+                    <option value="VETERINARIO(A)">VETERINARIO(A)</option>
+                    <option value="DOCTOR(A)">DOCTOR(A)</option>
+                    <option value="FUTBOLISTA">FUTBOLISTA</option>
+                </select>
+                </br>
+                <input type="radio" name="suenoRadio" value="fav" />OTRO
+                <input type="text" name="suenoTxt" class="to-upper"/>
+            </td>
         </tr>
         <tr align="justify">
             <th width="35%">¿Alimento principal?</th>
