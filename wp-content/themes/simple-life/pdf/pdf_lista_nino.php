@@ -4,7 +4,7 @@ require ('../ccwperu/wp-content/themes/simple-life/third-party/fpdf/fpdf.php');
 
 class PdfListaNino extends FPDF{
 	function Header(){
-		$this->Image('../ccwperu/wp-content/themes/simple-life/images/ccw_logo.png',10,6,50);
+		$this->Image('../ccwperu/pictures/ccw/ccw_logo.png',10,6,50);
 		$this->SetY(3);
 		$this->Cell(120);
 		$this->Ln(20);	
@@ -78,15 +78,15 @@ class PdfListaNino extends FPDF{
 		$mes = "";
 		
 		switch ($month)	{
-			case 01: $mes = "ENERO"; break;
-			case 02: $mes = "FEBRERO"; break;
-			case 03: $mes = "MARZO"; break;
-			case 04: $mes = "ABRIL"; break;
-			case 05: $mes = "MAYO"; break;
-			case 06: $mes = "JUNIO"; break;
-			case 07: $mes = "JULIO"; break;
-			case 08: $mes = "AGOSTO"; break;
-			case 09: $mes = "SETIEMBRE"; break;
+			case 1: $mes = "ENERO"; break;
+			case 2: $mes = "FEBRERO"; break;
+			case 3: $mes = "MARZO"; break;
+			case 4: $mes = "ABRIL"; break;
+			case 5: $mes = "MAYO"; break;
+			case 6: $mes = "JUNIO"; break;
+			case 7: $mes = "JULIO"; break;
+			case 8: $mes = "AGOSTO"; break;
+			case 9: $mes = "SETIEMBRE"; break;
 			case 10: $mes = "OCTUBRE"; break;
 			case 11: $mes = "NOVIEMBRE"; break;
 			case 12: $mes = "DICIEMBRE"; break;
@@ -152,9 +152,9 @@ class PdfListaNino extends FPDF{
 	}
 	
 }
-	$nombres = $_POST[nombres];
-	$centro = $_POST[centro];
-	$tipo = $_POST[tipo];
+	$nombres = $_POST['nombres'];
+	$centro = $_POST['centro'];
+	$tipo = $_POST['tipo'];
 	
 	$pdf = new PdfListaNino();
 	$pdf->SetMargins(10,30,10);

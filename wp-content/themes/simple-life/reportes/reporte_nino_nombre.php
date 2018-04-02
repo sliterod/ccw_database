@@ -40,7 +40,7 @@
 			$name = $element->nom;
 ?>
 	<tr align="justify">
-    	<td><a href="http://localhost/ccwperu/ficha-simple-nino/?id=<?php echo $id?>">
+    	<td><a href="http://192.168.1.8/ccwperu/ficha-simple-nino/?id=<?php echo $id?>">
         <?php echo $name?>
         </a>
         </td>
@@ -54,7 +54,7 @@
 ?>
 </table>
 </br>
-<form action="http://localhost/ccwperu/busqueda-nombre/">
+<form action="http://192.168.1.8/ccwperu/busqueda-nombre/">
 <input type="submit" align="middle" value="Regresar"/>
 </form>
 </main><!-- #main -->

@@ -8,7 +8,7 @@ get_header();
 	$query = "SELECT id_sta id, estado_sta estado from status";
 	$result = $wpdb->get_results($query);
 ?>
-<form action="http://localhost/ccwperu/reporte-status/" method="post">
+<form action="http://192.168.1.8/ccwperu/reporte-status/" method="post">
 	<label for="sta">Seleccione el estado a buscar:</label>
     <select name="status">
 	<?php
@@ -22,7 +22,7 @@ get_header();
     <br />
 	<input type="submit" value="BUSCAR" /></form>
     </br>
-    <form action="http://localhost/ccwperu/busquedas/">
+    <form action="http://192.168.1.8/ccwperu/busquedas/">
     <input type="submit" align="middle" value="Regresar"/>
     </form>
 </main><!-- #main -->

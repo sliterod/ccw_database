@@ -11,7 +11,7 @@
 	ORDER BY nombre_cv"
 	);
 ?>
-<form action="http://localhost/ccwperu/pdf-lista-centros/" method="post">
+<form action="http://192.168.1.8/ccwperu/pdf-lista-centros/" method="post">
 <div id="results">
 <table border ="1" width="400px" align="center" id="centre">
     <tr>
@@ -41,7 +41,7 @@
 		<tr>
 	        <td><center><?php echo $counter;?></center>
             </td>
-        	<td><center><a href="http://localhost/ccwperu/reporte-centro-vida/?id=<?php echo $id?>"><?php echo $element->nom;?></a></center></td>
+        	<td><center><a href="http://192.168.1.8/ccwperu/reporte-centro-vida/?id=<?php echo $id?>"><?php echo $element->nom;?></a></center></td>
             <td><center></center></td>
             <td><center></center></td>
 		</tr>

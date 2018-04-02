@@ -16,7 +16,7 @@ get_header();
 	foreach ($childAge as $element){	
 ?>
    		<tr>
-    		<td><a href="http://localhost/ccwperu/ficha-simple-nino/?id=<?php echo $element->id?>">
+    		<td><a href="http://192.168.1.8/ccwperu/ficha-simple-nino/?id=<?php echo $element->id?>">
 			<?php echo $element->nombre;?></a>
             </th>
 	    </tr>
@@ -26,7 +26,7 @@ get_header();
 	
 </table>
 
-<form action="http://localhost/ccwperu/estadisticas-generales/">
+<form action="http://192.168.1.8/ccwperu/estadisticas-generales/">
 <input type="submit" align="middle" value="Regresar"/>
 </form>
 </div>

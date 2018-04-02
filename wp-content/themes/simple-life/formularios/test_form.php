@@ -45,7 +45,7 @@ get_header();
 
 <div id="primary" <?php echo simple_life_content_class( 'content-area' ); ?>>
 <main id="main" class="site-main" role="main">
-<form action="http://localhost/ccwperu/agregar-nino/" method="post" name="formnino">
+<form action="http://192.168.1.8/ccwperu/agregar-nino/" method="post" name="formnino">
 <div id="basic-data" class="row" style="width:inherit">
 	<div class="column">
     <table id="datos_nino" border="1">
@@ -99,7 +99,7 @@ get_header();
         </tr>        
         <tr align="justify">
             <th>Estado actual</th>
-            <td>
+            <td colspan="2">
             <select name="status">
             <?php 
                 foreach($resultStatus as $element){
@@ -112,6 +112,17 @@ get_header();
     	</tr>
         <tr align="justify">
             <th width="25%">sponsor</th>
+            <td width="10%">
+            <select name="title">
+            	<option value="none" selected="selected">SELECCIONE...</option>
+                <option value="none">NINGUNO</option>
+                <option value="Mr.">MR.</option>
+                <option value="Mrs.">MRS.</option>
+                <option value="Miss">MISS.</option>
+                <option value="Mr. and Mrs.">MR. AND MRS.</option>
+                <option value="Family">FAMILY</option>
+            </select>
+            </td>
             <td><input type="text" name="sponsor" class="to-upper"/></td>
         </tr>
 	</table>
@@ -167,7 +178,8 @@ get_header();
                 <select name="turno">
                 <?php 
                     foreach($resultShift as $element){
-                ?><option value="<?php echo $element->id;?>"><?php echo strtoupper($element->tur);?></option>
+						$turno = strtoupper($element->tur);
+                ?><option value="<?php echo $turno;?>"><?php echo $turno;?></option>
                 <?php		
                     }?>	
                 </select>
@@ -220,13 +232,13 @@ get_header();
         </tr>
         <tr align="justify">
             <th width="25%">Nombres</th>
-            <td width="25%"><input type="text" name="nommad" class="to-upper"/></td>
-            <td width="25%"><input type="text" name="nommad" class="to-upper"/></td>
+            <td width="25%"><input type="text" name="nommadA" class="to-upper"/></td>
+            <td width="25%"><input type="text" name="nommadB" class="to-upper"/></td>
         </tr>
         <tr align="justify">
             <th>Apellidos</th>
-            <td><input type="text" name="apemad" class="to-upper"/></td>
-            <td><input type="text" name="apemad" class="to-upper"/></td>
+            <td><input type="text" name="apemadA" class="to-upper"/></td>
+            <td><input type="text" name="apemadB" class="to-upper"/></td>
         </tr>
         <tr align="justify">
             <th>Ocupación</th>
@@ -235,10 +247,11 @@ get_header();
         <tr align="justify">
             <th>religión</th>
             <td colspan="2">
-            <select name="religion">
+            <select name="religionmad">
                 <?php 
                     foreach($resultReligion as $element){
-                ?><option value="<?php echo mb_strtoupper($element->nombre);?>"><?php echo mb_strtoupper($element->nombre);?></option>
+						$relgion = mb_strtoupper($element->nombre);
+                ?><option value="<?php echo $religion;?>"><?php echo $religion;?></option>
                 <?php		
                     }?>	
             </select>
@@ -246,8 +259,8 @@ get_header();
         </tr>
         <tr align="justify">
             <th>Teléfono (s)</th>
-            <td><input type="text" name="telmad" onkeypress="javascript:return CheckNumberInput(event)"/></td>
-            <td><input type="text" name="telmad" onkeypress="javascript:return CheckNumberInput(event)"/></td>
+            <td><input type="text" name="telmadA" onkeypress="javascript:return CheckNumberInput(event)"/></td>
+            <td><input type="text" name="telmadB" onkeypress="javascript:return CheckNumberInput(event)"/></td>
         </tr>
         <tr align="justify">
             <th>Fecha nacimiento</th>
@@ -276,7 +289,7 @@ get_header();
         </tr>
         <tr align="justify">
             <th>¿qué hace en un día normal?</th>
-            <td colspan="2"><input type="text" name="razonmad" class="to-upper"/></td>
+            <td colspan="2"><input type="text" name="normalvivemad" class="to-upper"/></td>
         </tr>
     </table>
 	</div>
@@ -335,7 +348,7 @@ get_header();
         </tr>
         <tr align="justify">
             <th>¿qué hace en un día normal?</th>
-            <td colspan="2"><input type="text" name="razonpad" class="to-upper"/></td>
+            <td colspan="2"><input type="text" name="normalvivepad" class="to-upper"/></td>
         </tr>
     </table>
 	</div>
@@ -360,7 +373,7 @@ get_header();
                     <option value="ARTE">ARTE</option>
                 </select>
                 </br>
-                <input type="radio" name="cursoRadio" value="fav" />OTRA
+                <input type="radio" name="cursoRadio" value="otro" />OTRA
                 <input type="text" name="cursoTxt" class="to-upper"/>
             </td>
         </tr>
@@ -383,7 +396,7 @@ get_header();
                     <option value="FUTBOLISTA">FUTBOLISTA</option>
                 </select>
                 </br>
-                <input type="radio" name="suenoRadio" value="fav" />OTRO
+                <input type="radio" name="suenoRadio" value="otro" />OTRO
                 <input type="text" name="suenoTxt" class="to-upper"/>
             </td>
         </tr>
@@ -433,7 +446,7 @@ get_header();
             <td>
                 <select name="acept">
                     <option value="SI">SI</option>
-                    <option value="NO">NO</option>
+                    <option value="NO" selected="selected">NO</option>
                 </select>
             </td>
         </tr>
@@ -476,7 +489,8 @@ get_header();
     </div>
 </div>
 <input type="hidden" name="resultChild" value="<?php echo htmlspecialchars(serialize($resultChild));?>"/>
-<input type="submit" align="middle" value="Crear entrada"/>
+<input type="hidden" id="count" name="siblingCount" value=""/>
+<input type="submit" align="middle" onclick="GetSiblingCount()" value="Crear entrada"/>
 </form>
 
 </main><!-- #main -->

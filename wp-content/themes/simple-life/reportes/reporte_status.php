@@ -51,7 +51,7 @@ get_header();
 			$nom = $element->nom;
 	?>
     <tr align="justify">
-    	<td colspan="2"><a href="http://localhost/ccwperu/ficha-simple-nino/?id=<?php echo $id?>">
+    	<td colspan="2"><a href="http://192.168.1.8/ccwperu/ficha-simple-nino/?id=<?php echo $id?>">
         <?php echo $nom?>
         </a>
         </td>
@@ -71,7 +71,7 @@ get_header();
 	}
 	?>
 </table>
-<form action="http://localhost/ccwperu/reporte-status/" method="post"><center>
+<form action="http://192.168.1.8/ccwperu/reporte-status/" method="post"><center>
 <?php 
 if($pages > 1){
 	for ($i = 0; $i < $pages; $i++){
@@ -92,7 +92,7 @@ if($pages > 1){
 <input type="submit" value="Generar reporte">
 </form>
 </br>
-<form action="http://localhost/ccwperu/busqueda-status/">
+<form action="http://192.168.1.8/ccwperu/busqueda-status/">
 <input type="submit" align="middle" value="Regresar"/>
 </form>
 </main><!-- #main -->

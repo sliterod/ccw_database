@@ -52,8 +52,8 @@ get_header();
         </tr>
         <tr align="justify">
             <th>Teléfono (s)</th>
-            <td><input type="text" name="telmad" onkeypress="javascript:return CheckNumberInput(event)"/></td>
-            <td><input type="text" name="telmad" onkeypress="javascript:return CheckNumberInput(event)"/></td>
+            <td><input type="text" name="telmaA" onkeypress="javascript:return CheckNumberInput(event)"/></td>
+            <td><input type="text" name="telmaB" onkeypress="javascript:return CheckNumberInput(event)"/></td>
         </tr>
         <tr align="justify">
         	<th>Correo electrónico</th>

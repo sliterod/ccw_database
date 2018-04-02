@@ -22,7 +22,7 @@ function AddSiblingRow(data){
 	var cellGrade = row.insertCell(4);
 	var cellObserv = row.insertCell(5);
 	
-	var gradeInner = "<select name='gradoh"+fixedSiblingIndex+"'>";
+	/*var gradeInner = "<select name='gradoh"+fixedSiblingIndex+"'>";
 	
 	for (i = 0; i < data.length; i++){
 		var array = data[i].split("_");
@@ -31,15 +31,14 @@ function AddSiblingRow(data){
 		gradeInner = gradeInner + option;
 	}
 	
-	gradeInner = gradeInner + "</select>";
+	gradeInner = gradeInner + "</select>";*/
 	
 	cellNom.innerHTML = "<input type='text' name='nombreh"+fixedSiblingIndex+"' class='to-upper'/>";
 	cellLast.innerHTML = "<input type='text' name='apellidoh"+fixedSiblingIndex+"' class='to-upper'/>";
 	cellAge.innerHTML = "<input type='text' name='edadh"+fixedSiblingIndex+"' width='40' maxlength='2' onkeypress='javascript:return CheckNumberInput(event)'/>";
 	cellSex.innerHTML = "<select name='sexoh"+fixedSiblingIndex+"'><option value='M'>M</option><option value='F'>F</option></select>";
-	cellGrade.innerHTML = gradeInner;
 	cellObserv.innerHTML = "<input type='text' name='observh"+fixedSiblingIndex+"' class='to-upper'/>";
-	
+	cellGrade.innerHTML = gradeInner;
 	fixedSiblingIndex += 1;
 };
 	
@@ -95,4 +94,16 @@ function GetTable(id){
 	var row = table.insertRow(-1);
 	
 	return row;
+}
+
+function GetSiblingCount(){
+	
+	var count = document.getElementById("tabla-hermano").rows.length - 2;
+	
+	document.getElementById("count").value = count;
+}
+
+/*Start of validations*/
+function dateValidation(){
+	
 }

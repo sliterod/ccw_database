@@ -49,7 +49,7 @@ where id_nin = ".$id;
 ?>
 <div id="primary" <?php echo simple_life_content_class( 'content-area' ); ?>>
 <main id="main" class="site-main" role="main">
-<form action="http://localhost/ccwperu/pdf-nino-simple/" method="post">
+<form action="http://192.168.1.8/ccwperu/pdf-nino-simple/" method="post">
 <table id="datos_nino" border="1" width="800px">
     <tr align="center">
     	<th colspan="3">Datos del niño</th>
@@ -102,11 +102,11 @@ where id_nin = ".$id;
 <input type="submit" align="middle" value="Generar reporte"/>
 </form>
 </br>
-<form action="http://localhost/ccwperu/ficha-nino/?id=<?php echo $id;?>" method="post">
+<form action="http://192.168.1.8/ccwperu/ficha-nino/?id=<?php echo $id;?>" method="post">
 <input type="submit" ="middle" value="Ampliar ficha"/>
 </form>
 </br>
-<form action="http://localhost/ccwperu/busquedas/">
+<form action="http://192.168.1.8/ccwperu/busquedas/">
 <input type="submit" align="middle" value="Regresar"/>
 </form>
 </main><!-- #main -->

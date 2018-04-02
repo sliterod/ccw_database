@@ -1,0 +1,28 @@
+@charset "utf-8";
+/* CSS Document */
+.column{
+	float:left; 
+	width:50%;
+	padding:2%;
+}
+
+.row:after{
+	content:""; 
+	display:table; 
+	clear:both;
+}
+
+.full-column{
+	float:left;
+	width:100%;
+	padding:2%;
+}
+
+/*Classes*/
+.to-upper{
+	text-transform:uppercase;
+}
+
+@media (max-width: 1152px){
+	.column {width:100%;}
+	}

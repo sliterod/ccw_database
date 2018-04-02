@@ -29,7 +29,7 @@ get_header();
 
 <div id="primary" <?php echo simple_life_content_class( 'content-area' ); ?>>
 <main id="main" class="site-main" role="main">
-<form action="http://localhost/ccwperu/agregar-nino/" method="post" name="formnino">
+<form action="http://192.168.1.8/ccwperu/agregar-nino/" method="post" name="formnino">
 <table id="datos_nino" border="1"width="800px">
     <tr align="center">
     	<th colspan="3">Datos del niño</th>

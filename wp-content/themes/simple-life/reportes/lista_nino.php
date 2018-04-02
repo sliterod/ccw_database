@@ -85,8 +85,8 @@ class ListaNino {
 	}
 }
 
-	$id = $_POST[id];
-	$tipo = $_POST[tipo];
+	$id = $_POST['id'];
+	$tipo = $_POST['tipo'];
 
 	$listaNino = new ListaNino();
 	$dbConn = new DatabaseConn();
@@ -113,7 +113,7 @@ class ListaNino {
 
 	$tipo = strtoupper($tipo);
 ?>
-<form target="_blank" id="data" action="http://localhost/ccwperu/pdf-lista-nino/" method="post">
+<form target="_blank" id="data" action="http://192.168.1.8/ccwperu/pdf-lista-nino/" method="post">
 <input type="hidden" name="centro" value="<?php echo $centro;?>"/>
 <input type="hidden" name="nombres" value="<?php echo $nombres;?>"/>
 <input type="hidden" name="tipo" value="<?php echo $tipo;?>"/>
@@ -122,12 +122,12 @@ class ListaNino {
 	document.getElementById('data').submit();
 </script>
 <?php 
-//header ('location:http://localhost/ccwperu/pdf-lista-nino/?id='.$id.'');
+//header ('location:http://192.168.1.8/ccwperu/pdf-lista-nino/?id='.$id.'');
 ?>
 <div id="primary" <?php echo simple_life_content_class( 'content-area' ); ?>>
 <main id="main" class="site-main" role="main">
 <p>Los resultados se mostraron en una nueva ventana. Si estos no aparecen, por favor permita a su navegador abrir ventanas emergentes de esta pagína.</p>
-<form action="http://localhost/ccwperu/listas/">
+<form action="http://192.168.1.8/ccwperu/listas/">
 <input type="submit" align="middle" value="Regresar"/>
 </form>
 </main><!-- #main -->

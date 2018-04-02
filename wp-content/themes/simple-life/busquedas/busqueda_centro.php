@@ -6,12 +6,12 @@ get_header();
 <main id="main" class="site-main" role="main">
 <?php 
 	
-	$tipo = $_GET[lista];
+	$tipo = $_GET['lista'];
 
 	$query = "SELECT id_cv id, nombre_cv nombre from centro_vida";
 	$result = $wpdb->get_results($query);
 ?>
-<form action="http://localhost/ccwperu/lista-ninos/" method="post">
+<form action="http://192.168.1.8/ccwperu/lista-ninos/" method="post">
 	<label for="sta">Seleccione el Centro de Vida:</label>
     <select name="id">
 	<?php
@@ -25,7 +25,7 @@ get_header();
     <br />
 	<input type="submit" value="BUSCAR" /></form>
     </br>
-    <form action="http://localhost/ccwperu/listas/">
+    <form action="http://192.168.1.8/ccwperu/listas/">
     <input type="submit" align="middle" value="Regresar"/>
     </form>
 </main><!-- #main -->

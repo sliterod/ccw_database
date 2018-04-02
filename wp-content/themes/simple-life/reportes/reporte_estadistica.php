@@ -108,7 +108,7 @@ get_header();
         <th><center><?php echo ($totalFemaleE == 0) ? '---':$totalFemaleE;?></center></th>
     </tr>
 </table>
-<form action="http://localhost/ccwperu/estadisticas">
+<form action="http://192.168.1.8/ccwperu/estadisticas">
 <input type="submit" align="middle" value="Regresar"/>
 </form>
 </div>
