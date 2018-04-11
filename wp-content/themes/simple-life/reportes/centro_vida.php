@@ -43,15 +43,21 @@ include('../ccwperu/wp-content/themes/simple-life/model/var_centro.php');
 	foreach ($resultCentro as $element){
 		$id = $element->id;
 		$name = $element->nom;
-
+                
 		$resultMaestro = $centroData->getInfoMaestro($id,1);
 		
-		foreach($resultMaestro as $teacher){
+                if (count($resultMaestro)>0){
+                    foreach($resultMaestro as $teacher){
 			$maestro = $teacher->nombre;
 			$telfA = $teacher->telA;
 			$telfB = $teacher->telB;
 			$teachId = $teacher->id;
-		}
+                    }
+                }
+                else{
+                    $maestro = "---"; $telfA = "---";
+                    $telfB = "---"; $teachId = "---";
+                }		
 	
 		?>
 		<tr>
@@ -60,9 +66,9 @@ include('../ccwperu/wp-content/themes/simple-life/model/var_centro.php');
             <center><a href="http://192.168.1.8/ccwperu/reporte-centro-vida/?id=<?php echo $id;?>">
 			<?php echo $name;?></a></center>
             </td>
-            <td><a href="">
-			<center><?php echo $maestro;?></center>
-            </a></td>
+            <td>
+                <center><?php echo $maestro;?></center>
+            </td>
             <td><center><?php echo $telfA;?></center></td>
             <td><center><?php echo $telfB;?></center></td>
 		</tr>
